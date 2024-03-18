@@ -1,4 +1,4 @@
-# 04 - Multiple Process
+# 04 - Multiple Processes
 
 ## Program Address Space
 
