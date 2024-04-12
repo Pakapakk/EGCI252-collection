@@ -70,3 +70,5 @@ dkms.conf
 # Assignment
 **/assignment/
 assignment/*
+
+**/.DS_Store/
