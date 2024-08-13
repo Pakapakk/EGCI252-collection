@@ -72,3 +72,6 @@ dkms.conf
 assignment/*
 
 **/.DS_Store
+
+**/*.out
+**/*.exe
