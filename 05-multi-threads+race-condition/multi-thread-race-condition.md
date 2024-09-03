@@ -68,8 +68,25 @@ int main(){
 ```
 
 ## Thread Return Values
+`int pthread_join(pthread_t threadID, void** threadReturnVal)`. f the value in the second argument of pthread_join is non-null, the return value of the thread will be store in that variable. The return type is void* like the thread argument type.
+```c
+void *computePrime(void *arg){
+    // the rest of the code goes here
+}
+
+int main(){
+    // the rest of the code goes here
+    int prime;
+
+    pthread_create(&thread, NULL, &computePrime, &whichPrime);
+    pthread_join(thread, (void *)&prime);
+    // the rest of the code goes here
+}
+```
 
 ## Thread Attributes
+
+
 ## Detach State
 ## Thread Cancallation
 ## Critical Section
