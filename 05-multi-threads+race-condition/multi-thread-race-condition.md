@@ -68,7 +68,7 @@ int main(){
 ```
 
 ## Thread Return Values
-`int pthread_join(pthread_t threadID, void** threadReturnVal)`. f the value in the second argument of pthread_join is non-null, the return value of the thread will be store in that variable. The return type is void* like the thread argument type.
+`int pthread_join(pthread_t threadID, void** threadReturnVal)`. If the value in the second argument of pthread_join is non-null, the return value of the thread will be store in that variable. The return type is void* like the thread argument type.
 ```c
 void *computePrime(void *arg){
     // the rest of the code goes here
@@ -85,9 +85,37 @@ int main(){
 ```
 
 ## Thread Attributes
+Thread attributes provide a mechanism for ne-tuning the behavior of individual threads. Two types of thread attributes are **`joinable (default)`** and **`detached`**. Joinable thread is not normally cleaned up by OS after it terminates until <b>pthread_join*()</b> is called, and detached thread is cleaned up automatically.
 
 
 ## Detach State
+```c
+void* thread_function (void* thread_arg) {
+    // the rest of the code goes here
+}
+
+int main () {
+    pthread_attr_t attr;
+    pthread_t thread;
+    
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+    pthread_create(&thread, &attr, &thread_function, NULL);
+    
+    pthread_attr_destroy(&attr);
+    // the rest of the code goes here
+    /* No need to join the second thread. */
+    /* However the main thread needs to make sure that it will nish     after   the other threads */
+    return 0;
+}
+```
 ## Thread Cancallation
+Under normal circumstances, a thread terminates when it
+exits normally, either by returning from its thread function or
+by calling <b>pthread_exit()</b>. However, it can be cancelled by calling <b>pthread_cancel()</b>. The cancelled thread can later be joined to free up the resources. There are 3 types of thread cancellations
+
+- `Asynchronusly cancelable` : can be canceled at any point in its execution.
+- `Synchronous cancelable` : cancellation requests are queued, and the thread is canceled only when it reaches speci c points in its execution.
+- `Uncancelable` : cancellation is ignored 
 ## Critical Section
 ## Race Condtions
