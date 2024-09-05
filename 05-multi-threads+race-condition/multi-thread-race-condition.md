@@ -117,5 +117,15 @@ by calling <b>pthread_exit()</b>. However, it can be cancelled by calling <b>pth
 - `Asynchronusly cancelable` : can be canceled at any point in its execution.
 - `Synchronous cancelable` : cancellation requests are queued, and the thread is canceled only when it reaches speci c points in its execution.
 - `Uncancelable` : cancellation is ignored 
+
 ## Critical Section
+A critical section is a sequence of code that
+must be executed either in its entirety or not at all; in other
+words, if a thread begins executing the critical section, it must
+continue until the end of the critical section without being
+canceled.
+
 ## Race Condtions
+A race condition occurs when multiple processes are trying to do
+something with shared resource and the nal outcome depends on
+the order in which the processes run. `fork()` is the main cause for race condition.
