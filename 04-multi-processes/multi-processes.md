@@ -6,10 +6,10 @@
 
 From bottom to top :
 - `Text Segment` : stores all the codes, including main code and function code.
-- `.Data Segment` : intitialized static data (e.g. `char name[] = "bob";`)
-- `.BSS Segment` : uninitialized static data (e.g. `char name[100];`)
-- `Heap Segment` : dynamic memory (e.g. `malloc()`)
-- `Stack Segment` : automatic variables and return values.
+- `.Data Segment` : intitialized global static data (e.g. `char name[] = "bob";`)
+- `.BSS Segment` : uninitialized global static data (e.g. `char name[100];`)
+- `Heap Segment` : static variable managed by `malloc()`, `realloc()`, `free()`
+- `Stack Segment` : automatic / local variables, parameters and return values.
 
 ## Definition of Multiprocesses
 - Multiprocess is the program that generate another program and runs it in parallel. The main process of the program is called **`Parent Process`** and the process that is newly created by Parent process is called **`Child Process`**.
